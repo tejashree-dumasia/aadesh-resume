@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aadesh Divekar Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #e6f2ff;
+      color: #333;
+      line-height: 1.6;
+      padding-top: 5px;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-bottom: 5px solid #0056b3;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    header img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-top: 20px;
+      object-fit: cover;
+      object-position: center;
+      border: 4px solid white;
+    }
+
+    nav {
+      background-color: #0056b3;
+      padding: 1rem 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 1rem;
+      background-color: white;
+    }
+
+    h2 {
+      color: #0056b3;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #ffcc00;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background-color: #0056b3;
+      color: white;
+    }
+
+    .highlight {
+      color: #ffcc00;
+      font-weight: 600;
+    }
+
+    /* Scroll Progress Bar */
+    #progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: #ddd;
+      z-index: 999;
+    }
+
+    #progress-bar {
+      height: 100%;
+      background: #ffcc00;
+      width: 0%;
+      text-align: right;
+      padding-right: 10px;
+      color: #000;
+      font-weight: bold;
+    }
+
+    /* Parallax Effect */
+    .parallax {
+      background-image: url('aadu.jpeg');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 400px;
+      position: relative;
+    }
+
+    .parallax h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2.8rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+
+    /* Contact Icons */
+    .contact-info p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+    .contact-info span {
+      margin-right: 10px;
+    }
+
+    /* Timeline for Experience */
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+      border-left: 3px solid #0056b3;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 5px;
+      left: -10px;
+      width: 15px;
+      height: 15px;
+      background: #ffcc00;
+      border: 2px solid #0056b3;
+      border-radius: 50%;
+    }
+
+    .timeline-content {
+      padding-left: 15px;
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        font-size: 1rem;
+        margin: 0 1rem;
+      }
+      .parallax h2 {
+        font-size: 1.8rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="progress-bar-container">
+    <div id="progress-bar">0%</div>
+  </div>
+
+  <header>
+    <img src="aadu.jpeg" alt="Aadesh Divekar" />
+    <h1>Aadesh Divekar</h1>
+    <p>Senior System Engineer | Cloud & DevOps Specialist</p>
+  </header>
+
+  <nav>
+    <a href="#career">Career</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Parallax Section -->
+  <section class="parallax">
+    <h2>Welcome to My Portfolio</h2>
+  </section>
+
+  <section id="career">
+    <h2>Career Objective</h2>
+    <p>Results-oriented Senior System Engineer with expertise in designing, implementing, and managing IT systems. Skilled in cloud infrastructure (AWS, Azure), automation, CI/CD, containerization, scripting, and performance optimization.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Key Skills</h2>
+    <ul>
+      <li><i class="fas fa-database"></i> SQL, Python, Shell Scripting</li>
+      <li><i class="fab fa-aws"></i> AWS, Azure, Terraform, Docker, Jenkins</li>
+      <li><i class="fas fa-tools"></i> Linux, Grafana, ServiceNow</li>
+    </ul>
+    <canvas id="skillChart" width="400" height="200"></canvas>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline" id="experience-timeline">
+      <!-- Dynamic timeline content will be injected here -->
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p><strong class="highlight">BHF IT Steady State 2020:</strong> Led the migration and optimization of legacy systems for a large enterprise, integrating cloud solutions and automating workflows using Jenkins and Terraform.</p>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+      <li>AWS Certified Developer Associate</li>
+      <li>Microsoft Azure Developer Associate</li>
+      <li>DevOps Engineer Expert (Microsoft)</li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p><strong>B.Tech/B.E</strong> - Dr. Babasaheb Ambedkar Technological University</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p><span><i class="fas fa-envelope"></i></span>Email: <a href="mailto:adeshdivekar0@gmail.com">adeshdivekar0@gmail.com</a></p>
+      <p><span><i class="fas fa-phone"></i></span>Phone: 7219355467</p>
+      <p><span><i class="fas fa-map-marker-alt"></i></span>Location: Pune</p>
+      <p><span><i class="fab fa-linkedin"></i></span>LinkedIn: <a href="https://www.linkedin.com/in/aadi-divekar-5a632b1b4" target="_blank">View Profile</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Aadesh Divekar</p>
+  </footer>
+
+  <script>
+    // Scroll Progress Bar
+    window.addEventListener("scroll", function () {
+      var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById("progress-bar");
+      progressBar.style.width = scrolled + "%";
+      progressBar.textContent = Math.round(scrolled) + "%";
+    });
+
+    // Skill Chart
+    const ctx = document.getElementById('skillChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Python', 'SQL', 'AWS', 'Azure', 'Terraform', 'Docker'],
+        datasets: [{
+          label: 'Proficiency (%)',
+          data: [90, 85, 80, 75, 70, 75],
+          backgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+
+    // Dynamic Experience Timeline
+    const experienceData = [
+      {
+        role: "Senior System Engineer",
+        company: "Cognizant",
+        duration: "Jan 2024 – Sep 2024"
+      },
+      {
+        role: "Senior System Executive",
+        company: "Cognizant",
+        duration: "Jan 2023 – Dec 2023"
+      },
+      {
+        role: "System Engineer",
+        company: "Cognizant",
+        duration: "Apr 2022 – Dec 2022"
+      }
+    ];
+
+    const timelineContainer = document.getElementById("experience-timeline");
+
+    experienceData.forEach(exp => {
+      const item = document.createElement("div");
+      item.className = "timeline-item";
+
+      item.innerHTML = `
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>${exp.company} – ${exp.role}</h3>
+          <span>${exp.duration}</span>
+        </div>
+      `;
+
+      timelineContainer.appendChild(item);
+    });
+  </script>
+</body>
+</html>
+
+
+
